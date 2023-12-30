@@ -69,10 +69,10 @@ form {
     border-radius: 5px;
     box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }
-#selected-edit {
-    box-shadow:4px 4px 10px rgba(235, 6, 6, 0.764)
+.selected-edit {
+    background-color: rgb(107, 107, 107);
+    color: gray;
 }
-
 
 /* This section is styling for the header */
 header {

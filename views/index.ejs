@@ -24,20 +24,27 @@
     
         <ul id="entries-list">
             <% for (let i = 0; i < entries.length; i++) { %>
-                <div class="entry-card <% locals.edit && i == editIndex ? "#selected_edit" : "" %>">
-                    <li>
-                        <h3>
-                            <%= entries[i].title %>
-                            <form action="/delete-entry/<%=i%>" method="post">
-                                <button type="submit" id="delete-button"><span class="material-symbols-outlined">delete_forever</span></button>
-                            </form>
-                            <form action="/edit-entry/<%=i%>" method="post">
-                                <button type="submit" id="edit-button"><span class="material-symbols-outlined">edit_note</span></button>
-                            </form>
-                        </h3>
-                    </li>
-                    <li><%= entries[i].content  %></li>
-                </div>
+                <% if (locals.edit && i == editIndex) { %>
+                    <div class="entry-card selected-edit">
+                        <li><h3>STATUS: Editing at the top of page...</h3></li>
+                        <li><%= entries[i].content  %></li>
+                    </div>
+                <% } else { %>
+                    <div class="entry-card">
+                        <li>
+                            <h3>
+                                <%= entries[i].title %>
+                                <form action="/delete-entry/<%=i%>" method="post">
+                                    <button type="submit" id="delete-button"><span class="material-symbols-outlined">delete_forever</span></button>
+                                </form>
+                                <form action="/edit-entry/<%=i%>" method="post">
+                                    <button type="submit" id="edit-button"><span class="material-symbols-outlined">edit_note</span></button>
+                                </form>
+                            </h3>
+                        </li>
+                        <li><%= entries[i].content  %></li>
+                    </div>
+                <% } %>
             <% } %>
         </ul>
     </div>
