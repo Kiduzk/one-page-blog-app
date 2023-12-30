@@ -18,6 +18,20 @@ app.get("/", (req, res) => {
     res.render("index.ejs", {entries: entries});
 });
 
+// Handle post editing post request
+app.post("/edit-entry/*", (req, res) => {
+    const blogIndex = req.originalUrl.slice(12, req.originalUrl.length);
+    console.log(blogIndex);
+    res.render("index.ejs", {entries: entries});  
+})
+
+// Handle post editing post request
+app.post("/delete-entry/*", (req, res) => {
+    const blogIndex = req.originalUrl.slice(14, req.originalUrl.length);
+    entries.splice(blogIndex, 1)
+    res.render("index.ejs", {entries: entries});  
+})
+
 // Handle post submission
 app.post("/submit", (req, res) => {
     // Adding submission to list of entires
