@@ -19,16 +19,17 @@ app.get("/", (req, res) => {
 });
 
 // Handle post editing post request
+// TODO: implement checking if blog index is valid arugment
 app.post("/edit-entry/*", (req, res) => {
     const blogIndex = req.originalUrl.slice(12, req.originalUrl.length);
-    console.log(blogIndex);
-    res.render("index.ejs", {entries: entries});  
+    res.render("index.ejs", {entries: entries, edit: entries[blogIndex], editIndex: blogIndex});
+    entries.splice(blogIndex, 1);  
 })
 
 // Handle post editing post request
 app.post("/delete-entry/*", (req, res) => {
     const blogIndex = req.originalUrl.slice(14, req.originalUrl.length);
-    entries.splice(blogIndex, 1)
+    entries.splice(blogIndex, 1);
     res.render("index.ejs", {entries: entries});  
 })
 
@@ -38,7 +39,6 @@ app.post("/submit", (req, res) => {
     entries.push(req.body);
     res.render("index.ejs", {entries: entries});
 });
-
 
 // Setting up our server
 app.listen(port, () => console.log("Server running on port " + port));

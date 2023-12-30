@@ -12,19 +12,22 @@
 
     <div id="body-content">
         <form action="/submit" method="post">
-            <input type="text" name="title" id="title" placeholder="Title..." value="This is a title" required>
-            <textarea name="content" id="content" placeholder="Content..." required>
-            Voluptate do nisi irure culpa. Officia dolor eu irure occaecat fugiat sunt do exercitation sunt dolor. Ullamco aute sint minim duis deserunt quis laborum. Occaecat nisi nisi nulla adipisicing duis nulla tempor ullamco aute tempor qui laborum. Ex dolor anim duis Lorem eu ex esse culpa quis exercitation consequat qui.
-            </textarea>
+            <% if (locals.edit) { %>
+                <input type="text" name="title" id="title" placeholder="Title..." value="<%= edit.title %>" required>
+                <textarea name="content" id="content" placeholder="Content..." required><%= edit.content %></textarea>
+            <% } else { %>
+                <input type="text" name="title" id="title" placeholder="Title..." value="This is a title" required>
+                <textarea name="content" id="content" placeholder="Content..." required>Voluptate do nisi irure culpa. Officia dolor eu irure occaecat fugiat sunt do exercitation sunt dolor. Ullamco aute sint minim duis deserunt quis laborum. Occaecat nisi nisi nulla adipisicing duis nulla tempor ullamco aute tempor qui laborum. Ex dolor anim duis Lorem eu ex esse culpa quis exercitation consequat qui.</textarea>
+            <% } %>
             <input type="submit" value="Post entry">
         </form>
     
         <ul id="entries-list">
             <% for (let i = 0; i < entries.length; i++) { %>
-                <div class="entry-card">
+                <div class="entry-card <% locals.edit && i == editIndex ? "#selected_edit" : "" %>">
                     <li>
                         <h3>
-                            Title: <%= entries[i].title %>
+                            <%= entries[i].title %>
                             <form action="/delete-entry/<%=i%>" method="post">
                                 <button type="submit" id="delete-button"><span class="material-symbols-outlined">delete_forever</span></button>
                             </form>
