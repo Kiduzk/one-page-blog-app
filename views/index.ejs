@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <input type="text" name="title" id="title" value="Title.." required>
+        <input type="text" name="content" id="content" value="Content.." required>
+        <input type="submit" value="Post entry">
+    </form>
+
+    <ul>
+        <% entries.forEach( entry => { %>
+            <li>Title: <%= entry.title %></li>
+            <li>Content: <%= entry.content  %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
