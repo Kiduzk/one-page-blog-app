@@ -7,16 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/" method="post">
-        <input type="text" name="title" id="title" value="Title.." required>
-        <input type="text" name="content" id="content" value="Content.." required>
+    <form action="/submit" method="post">
+        <input type="text" name="title" id="title" placeholder="Title..." required>
+        <textarea name="content" id="content" placeholder="Content..." required></textarea>
         <input type="submit" value="Post entry">
     </form>
 
-    <ul>
+    <ul id="entries-list">
         <% entries.forEach( entry => { %>
-            <li>Title: <%= entry.title %></li>
-            <li>Content: <%= entry.content  %></li>
+            <div class="entry-card">
+                <li><h3>Title: <%= entry.title %></h3></li>
+                <li><%= entry.content  %></li>
+            </div>
         <% }) %>
     </ul>
 </body>

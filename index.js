@@ -13,12 +13,13 @@ app.use(express.urlencoded({ extended:true }));
 
 // Home page route
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    // This path resets all our jounrals everytime
+    entries = [];
+    res.render("index.ejs", {entries: entries});
 });
 
 // Handle post submission
-app.post("/", (req, res) => {
-    console.log("Subitting")
+app.post("/submit", (req, res) => {
     // Adding submission to list of entires
     entries.push(req.body);
     res.render("index.ejs", {entries: entries});
