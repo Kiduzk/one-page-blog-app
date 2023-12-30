@@ -4,22 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Document</title>
 </head>
 <body>
-    <form action="/submit" method="post">
-        <input type="text" name="title" id="title" placeholder="Title..." required>
-        <textarea name="content" id="content" placeholder="Content..." required></textarea>
-        <input type="submit" value="Post entry">
-    </form>
+    <%- include("partials/header") %>
 
-    <ul id="entries-list">
-        <% entries.forEach( entry => { %>
-            <div class="entry-card">
-                <li><h3>Title: <%= entry.title %></h3></li>
-                <li><%= entry.content  %></li>
-            </div>
-        <% }) %>
-    </ul>
+    <div id="body-content">
+        <form action="/submit" method="post">
+            <input type="text" name="title" id="title" placeholder="Title..." value="This is a title" required>
+            <textarea name="content" id="content" placeholder="Content..." required>
+            Voluptate do nisi irure culpa. Officia dolor eu irure occaecat fugiat sunt do exercitation sunt dolor. Ullamco aute sint minim duis deserunt quis laborum. Occaecat nisi nisi nulla adipisicing duis nulla tempor ullamco aute tempor qui laborum. Ex dolor anim duis Lorem eu ex esse culpa quis exercitation consequat qui.
+            </textarea>
+            <input type="submit" value="Post entry">
+        </form>
+    
+        <ul id="entries-list">
+            <% entries.forEach( entry => { %>
+                <div class="entry-card">
+                    <li>
+                        <h3>
+                            Title: <%= entry.title %>
+                            <button id="delete-button"><span class="material-symbols-outlined">delete_forever</span></button>
+                            <button id="edit-button"><span class="material-symbols-outlined">edit_note</span></button>
+                        </h3>
+                    </li>
+                    <li><%= entry.content  %></li>
+                </div>
+            <% }) %>
+        </ul>
+    </div>
+    
+    <%- include("partials/footer") %>
 </body>
 </html>

@@ -1,15 +1,27 @@
-body {
-    margin: 50px 110px;
-    color: #1F1717;
+html {
     background-color: #FCF5ED;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+body {
+    margin: 0px;
+}
+
+#body-content {
+    margin: 50px 110px;
+    color: #1F1717;
+}
 @media (max-width: 800px) {
-    body {margin: 50px 50px;}
+    #body-content {margin: 50px 50px;}
 }
 
 ::placeholder, input[type="submit"] {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 #content {
@@ -32,11 +44,11 @@ input[type=submit] {
     width: 100px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, h3 button:hover {
     background-color: rgb(230, 228, 228);
 }
 
-input[type=submit]:active {
+input[type=submit]:active, h3 button:active {
     background-color: rgb(198, 198, 198);
 }
 
@@ -51,9 +63,42 @@ form {
 }
 
 .entry-card {
-    background-color: #ffc08f;
-    padding: 8px 16px;
+    background-color: #ffdcc1;
+    padding: 10px 16px;
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }
+
+
+/* This section is styling for the header */
+header {
+    background-color: #f86743;
+    margin: 0;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header h2 {
+    margin: 0;
+    color: #FCF5ED;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h3 button {
+    border: 1px solid #1F1717;
+    border-radius: 8%;
+    align-items: end;
+    float: right;
+    margin: 0px 5px;
+}
+
+#delete-button {
+    color: red;
+}
+
+/* This section is styling for the footer */
